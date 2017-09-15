@@ -15,6 +15,7 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  router: { base: '/jesselusko.com/' },
   css: [
     // node.js module but we specify the pre-processor
     { src: '~assets/main.scss', lang: 'scss' },
