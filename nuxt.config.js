@@ -1,4 +1,10 @@
 const config = require('./.contentful.json')
+const contentful = require('contentful')
+const contconfig = {
+  space: config.CTF_SPACE_ID,
+  accessToken: config.CTF_CDA_ACCESS_TOKEN
+}
+const client = contentful.createClient(contconfig)
 
 module.exports = {
   /*
@@ -36,6 +42,34 @@ module.exports = {
   env: {
     CTF_SPACE_ID: config.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+  },
+  generate: {
+    routes: function () {
+      var rarr = []
+
+      return Promise.all([
+        client.getEntries({
+          'content_type': 'series'
+        })
+      ]).then(([series]) => {
+        // return data that should be available
+        // in the template
+        var sarr = series.items.map((s) => {
+          return `/messages/${s.fields.slug}`
+        })
+
+        var marr = []
+        series.items.forEach( s => {
+          if (s.fields.messages) {
+            marr = s.fields.messages.map((m) => {
+              return `/messages/${s.fields.slug}/${m.fields.slug}`
+            })
+          }
+        })
+        rarr = [...sarr, ...marr]
+        return rarr
+      }).catch(console.error)
+    }
   },
   build: {
     /*

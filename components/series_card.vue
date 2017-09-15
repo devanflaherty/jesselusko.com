@@ -12,7 +12,7 @@
         <img :src="series.fields.thumbnail.fields.file.url">
       </nuxt-link>
     </transition>
-   
+
     <transition name="scale-out" appear v-if="$route.params.series">
       <section class="hero is-medium" :style="`width:100%; background-color: ${series.fields.color}`">
         <div class="hero-image" :style="`background-image: url(${series.fields.thumbnail.fields.file.url})`"></div>
@@ -22,7 +22,7 @@
               <div class="show-card" :style="`background-color:${series.fields.color}`"></div>
               <div class="hgroup">
                 <h3>{{series.fields.title}}</h3>
-                <span>{{pluralMe('Message', series.fields.messages.length, true)}}</span>
+                <span v-if="series.fields.messages">{{pluralMe('Message', series.fields.messages.length, true)}}</span>
               </div>
             </div>
           </div>
@@ -85,9 +85,9 @@ export default {
     .show-card {
       position: absolute;
       display: block;
-      left: 0; 
+      left: 0;
       right: 0;
-      top: 0; 
+      top: 0;
       bottom: 0;
       margin: auto;
       width: 250px;

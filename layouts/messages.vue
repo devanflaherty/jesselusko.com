@@ -2,18 +2,18 @@
   <div>
     <SiteNav :relative="true"></SiteNav>
     <nuxt/>
-    <Footer></Footer>
+    <SiteFooter></SiteFooter>
   </div>
 </template>
 
 <script>
 import SiteNav from '~/components/nav'
-import Footer from '~/components/footer'
+import SiteFooter from '~/components/footer'
 
 export default {
   components: {
     SiteNav,
-    Footer
+    SiteFooter
   }
 }
 </script>

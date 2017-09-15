@@ -1,7 +1,7 @@
 <template>
   <section>
     <SeriesCard :series="series"></SeriesCard>
-    
+
     <section class="section">
       <div class="container">
         <div class='columns'>
@@ -10,7 +10,7 @@
           </div>
         </div>
 
-        <div class="columns is-multiline" appear v-if="series.fields.messages.length > 0">
+        <div class="columns is-multiline" appear v-if="series.fields.messages">
           <div class="column is-4" v-for="(m, index) in series.fields.messages" :key="index" :data-index="index">
             <MessageCard :message="m" :color="series.fields.color" :slug="series.fields.slug" @showModal="showModal"></MessageCard>
           </div>
