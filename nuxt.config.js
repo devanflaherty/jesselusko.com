@@ -1,3 +1,5 @@
+const config = require('./.contentful.json')
+
 module.exports = {
   /*
   ** Headers of the page
@@ -7,12 +9,17 @@ module.exports = {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+      { hid: 'description', name: 'description', content: 'Jesse Lusko is a speaker and evangelist.' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  css: [
+    // node.js module but we specify the pre-processor
+    { src: '~assets/main.scss', lang: 'scss' },
+    // { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' },
+  ],
   /*
   ** Customize the progress-bar color
   */
@@ -20,6 +27,15 @@ module.exports = {
   /*
   ** Build configuration
   */
+  modules: [
+    // '@nuxtjs/bulma',
+    '@nuxtjs/axios',
+    '@nuxtjs/font-awesome'
+  ],
+  env: {
+    CTF_SPACE_ID: config.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: config.CTF_CDA_ACCESS_TOKEN,
+  },
   build: {
     /*
     ** Run ESLINT on save

@@ -1,0 +1,66 @@
+// File: assets/main.scss
+// 1. Import the initial variables
+$--columnGap: 20px;
+@import "~bulma/sass/utilities/initial-variables";
+
+// 2. Set your own initial variables
+// Update blue
+$blue: #72d0eb;
+// Add pink and its invert
+$green: #005236;
+$green-invert: #fff;
+// Add a serif family
+$sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$serif: "Georgia", serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $green;
+$primary-invert: $green-invert;
+// Use the existing orange as the danger color
+$danger: $orange;
+// Use the new serif family
+$family-primary: $sans;
+
+// 4. Import the rest of Bulma
+@import "~bulma/bulma";
+
+// Body Utilities
+html, body {
+  background-color: #F6F4F2;
+}
+
+@import "components/type";
+@import "components/nav";
+@import "components/buttons";
+
+.container-vh {
+  height: 100%;
+  width: 100%;
+  max-width: 100%!important;
+  min-height: 100vh;
+  display: flex;
+  padding: 0!important;
+  margin: 0;
+  > .columns {
+    margin-bottom: 0!important;
+  }
+}
+#content > * {
+  @include tablet {
+    margin-top: 6rem;
+  }
+}
+.main {
+  @include tablet {
+    padding:0 3rem 0 2rem;
+  }
+}
+
+.page-enter-active, .page-leave-active {
+  transition: all 0.5s ease;
+}
+.page-enter, .page-leave-active  {
+  opacity:0;
+  // transform: scale(0.9);
+}
