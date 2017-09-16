@@ -2,6 +2,9 @@
   <article>
     <transition name="scale-in" appear v-if="!$route.params.series">
       <nuxt-link class="series-card" :to="`/messages/${series.fields.slug}`">
+        <transition name="photo-wipe" appear>
+          <div class="mask" :style="`background-color: ${series.fields.color}`"></div>
+        </transition>
         <div class="flex" :class="{'show-title' : showTitle}" @mouseenter="showSeriesTitle(true)" @mouseleave="showSeriesTitle(false)">
           <div class="show-card" :style="`background-color:${series.fields.color}`"></div>
           <div class="hgroup">
@@ -171,6 +174,22 @@ export default {
 }
 
 // Transitions
+.mask {
+  position: absolute;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  background: black;
+  top: 0;
+  left: 0;
+  transform: translate(0, -100%);
+}
+.photo-wipe-enter-active, .photo-wipe-leave-active {
+  transition: all 0.5s 1s cubic-bezier(.97,0,.51,1)!important;
+}
+.photo-wipe-enter, .photo-wipe-leave-active  {
+  transform: translate(0, 0)
+}
 .scale-in-enter-active, .scale-in-leave-active {
   transition: all 0.5s ease;
 }
