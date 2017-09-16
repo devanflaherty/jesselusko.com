@@ -3,7 +3,7 @@
     <div class="columns">
       <div class="column fold-container">
         <transition name="fade-up" appear>
-          <div class="photo-fold" style="background: url('img/jesse.png')">
+          <div class="photo-fold" style="background: url('/img/jesse.png')">
             <transition name="photo-wipe" appear>
               <div class="mask"></div>
             </transition>
