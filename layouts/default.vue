@@ -4,8 +4,8 @@
     
     <transition name="slide-left" appear>
       <aside id="socialNav" v-if="!isMessage">
-        <a href="#"><i class="fa fa-facebook-square"></i></a>
-        <a href="#"><i class="fa fa-twitter-square"></i></a>
+        <a target="_blank" href="https://www.facebook.com/jesselusko"><i class="fa fa-facebook-square"></i></a>
+        <a target="_blank" href="https://twitter.com/jesselusko"><i class="fa fa-twitter-square"></i></a>
       </aside>
     </transition>
     <nuxt/>

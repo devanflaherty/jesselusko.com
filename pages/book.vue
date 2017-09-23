@@ -20,7 +20,6 @@
                       <input class="input" type="text" v-model="name" name="name" 
                         placeholder="John Smith" 
                         v-validate="'required'" 
-                        autofocus
                         :class="{'is-danger': errors.has('name') }">
                       <span class="icon is-small is-left">
                         <i class="fa fa-user"></i>
@@ -114,12 +113,12 @@
     <Modal :modalVisible="modalVisible" @changeModalVis="changeModalVis">
       <div slot="body" v-if="errors.any()">
         <h3>Errors</h3>
-        <p>Please correct the errors in your form!</p>
+        <h5>Please correct the errors in your form!</h5>
       </div>
 
       <div slot="body" v-if="!errors.any()">
         <h3>Success</h3>
-        <h3>Your request has been sent!</h3>
+        <h5>Your request has been sent!</h5>
       </div>
     </Modal>
   </div>
@@ -163,7 +162,7 @@ export default {
     },
     post () {
       this.loading = true
-      axios.post('https://formspree.io/devanflaherty@gmail.com', {
+      axios.post('https://formspree.io/jessejlusko@gmail.com', {
         'name': this.name,
         'email': this.email,
         'phone': this.phone,

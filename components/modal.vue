@@ -38,26 +38,4 @@ export default {
   background: white;
   padding: 1rem;
 }
-.mask {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  background: black;
-  top: 0;
-  left: 0;
-  transform: translate(0, -100%);
-}
-.photo-wipe-enter-active, .photo-wipe-leave-active {
-  transition: all 0.5s cubic-bezier(.97,0,.51,1);
-}
-.photo-wipe-enter, .photo-wipe-leave-to  {
-  transform: translate(0, 0)
-}
-.fade-in-enter-active, .fade-in-leave-active {
-  transition: all 0.5s ease;
-}
-.fade-in-enter, .fade-in-leave-to  {
-  opacity: 0
-}
 </style>

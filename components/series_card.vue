@@ -129,22 +129,6 @@ export default {
 }
 
 // Transitions
-.mask {
-  position: absolute;
-  z-index: 100;
-  width: 100%;
-  height: 100%;
-  background: black;
-  top: 0;
-  left: 0;
-  transform: translate(0, -100%);
-}
-.photo-wipe-enter-active, .photo-wipe-leave-active {
-  transition: all 0.5s 1s cubic-bezier(.97,0,.51,1)!important;
-}
-.photo-wipe-enter, .photo-wipe-leave-to  {
-  transform: translate(0, 0)
-}
 .scale-in-enter-active, .scale-in-leave-active {
   transition: all 0.5s ease;
 }

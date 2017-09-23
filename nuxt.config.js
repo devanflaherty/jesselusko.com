@@ -67,7 +67,8 @@ module.exports = {
     }
   },
   plugins: [
-    {src: '~plugins/vee-validate.js', ssr: true}
+    {src: '~plugins/vee-validate.js', ssr: true},
+    { src: `~plugins/vimeo-player`, ssr: false }
   ],
   build: {
     /*

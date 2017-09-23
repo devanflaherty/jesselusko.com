@@ -71,21 +71,6 @@ export default {
   }
 }
 
-.mask {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: black;
-  top: 0;
-  left: 0;
-  transform: translate(0, -100%);
-}
-.fade-up-enter-active, .fade-up-leave-active {
-  transition: all 0.5s ease;
-}
-.fade-up-enter, .fade-up-leave-to  {
-  transform: translate(0, 100px);
-}
 .photo-wipe-enter-active, .photo-wipe-leave-active {
   transition: all 0.5s cubic-bezier(.97,0,.51,1);
 }
