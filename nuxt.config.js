@@ -21,19 +21,14 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  router: { base: '/jesselusko.com/' },
+  router: { 
+    base: '/jesselusko.com/',
+    middleware: ['mobileToggle', 'toggleMessagePage']
+  },
   css: [
-    // node.js module but we specify the pre-processor
     { src: '~assets/main.scss', lang: 'scss' },
-    // { src: 'font-awesome/scss/font-awesome.scss', lang: 'scss' },
   ],
-  /*
-  ** Customize the progress-bar color
-  */
   loading: { color: '#3B8070' },
-  /*
-  ** Build configuration
-  */
   modules: [
     // '@nuxtjs/bulma',
     '@nuxtjs/axios',
@@ -71,6 +66,9 @@ module.exports = {
       }).catch(console.error)
     }
   },
+  plugins: [
+    {src: '~plugins/vee-validate.js', ssr: true}
+  ],
   build: {
     /*
     ** Run ESLINT on save
@@ -84,6 +82,12 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
+    postcss: {
+      plugins: {
+        'postcss-custom-properties': false
+      }
+    },
+    vendor: ['vue-vimeo-player', 'vee-validate']
   }
 }

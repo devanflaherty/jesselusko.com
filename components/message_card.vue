@@ -1,6 +1,6 @@
 <template>
   <article class="message-card" :style="`background-color: ${color}`">
-    <nuxt-link :to="`/messages/${slug}/${message.fields.slug}`"> 
+    <nuxt-link :to="`/messages/${slug}/${message.fields.slug}`">
       <transition name="photo-wipe" appear v-if="!loading">
         <div class="mask" :style="`background-color: ${color}`"></div>
       </transition>
@@ -21,7 +21,7 @@
 import axios from 'axios'
 export default {
   name: 'message-card',
-  props: ['message', 'color', 'slug'],
+  props: ['message', 'color', 'slug', 'token'],
   data () {
     return {
       loading: true,
@@ -38,16 +38,18 @@ export default {
       return res
     }
   },
-  methods: {
-    emitModal (message) {
-      this.$emit('showModal', message)
-    }
-  },
   created () {
     if (this.message.fields.videoUrl) {
-      axios.get(`http://vimeo.com/api/v2/video/${this.videoId}.json`).then(response => {
+      console.log(this.token)
+      axios.get(`https://api.vimeo.com/videos/${this.videoId}`, {
+        headers: {
+          'Authorization': 'Bearer ' + '4b1c131e6b72a9c33c598dc6c83b61f3'
+        }
+      }).then(response => {
         this.loading = false
-        this.thumb = response.data[0].thumbnail_large
+        this.thumb = response.data.pictures.sizes[3].link
+      }).catch(err => {
+        console.log(err.data)
       })
     }
   }
@@ -57,6 +59,7 @@ export default {
 <style lang="scss">
 .message-card {
   position: relative;
+  z-index: 200;
   padding-top: 55.25%;
   overflow: hidden;
   a {
@@ -71,6 +74,7 @@ export default {
     align-items: center;
     transition: all 0.5s ease;
     &:hover {
+      z-index: 200;
       transform: scale(1.05);
     }
     img {
@@ -95,13 +99,13 @@ export default {
 .photo-wipe-enter-active, .photo-wipe-leave-active {
   transition: all 0.5s cubic-bezier(.97,0,.51,1);
 }
-.photo-wipe-enter, .photo-wipe-leave-active  {
+.photo-wipe-enter, .photo-wipe-leave-to  {
   transform: translate(0, 0)
 }
 .fade-in-enter-active, .fade-in-leave-active {
   transition: all 0.5s ease;
 }
-.fade-in-enter, .fade-in-leave-active  {
+.fade-in-enter, .fade-in-leave-to  {
   opacity: 0
 }
 </style>

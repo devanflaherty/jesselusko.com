@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section id="messagePage" class="section" :key="$route.path">
     <div class="container">
       <div class="columns">
         <div class="column is-8">
@@ -10,7 +10,7 @@
           <h2>{{message.fields.title}}</h2>
           <h4 v-if="message.fields.scripture">{{message.fields.scripture}}</h4>
           <p v-if="message.fields.description">{{message.fields.description}}</p>
-          <a :href="message.fields.podcastLink" class="button is-dark" v-if="message.fields.podcastLink">Podcast</a>
+          <a :href="message.fields.podcastLink" target="_blank" class="button is-dark" v-if="message.fields.podcastLink">Podcast</a>
         </div>
       </div>
     </div>
@@ -23,6 +23,9 @@ import {createClient} from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
+  transition: {
+    name: 'page-left'
+  },
   components: {
     VideoPlayer
   },

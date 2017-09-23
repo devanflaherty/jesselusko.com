@@ -1,15 +1,18 @@
 <template>
-  <section>
-    <nuxt-child :series="series" :key="$route.path"></nuxt-child>
-  </section>
+  <nuxt-child :key="$route.path" :series="series">
+  </nuxt-child>
 </template>
 
 <script>
-import {createClient} from '~/plugins/contentful.js'
+import { createClient } from '~/plugins/contentful.js'
 const client = createClient()
+
 export default {
-  layout: 'messages',
-  asyncData ({env, params}) {
+  transition: {
+    name: 'page-scale',
+    mode: 'out-in'
+  },
+  asyncData ({ env, params }) {
     return Promise.all([
       client.getEntries({
         'content_type': 'series',
@@ -25,6 +28,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-</style>

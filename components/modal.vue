@@ -2,7 +2,7 @@
   <div class="modal" :class="{'is-active' : modalVisible}">
     <div class="modal-background" @click="closeModal"></div>
     <div class="modal-content">
-      <videoPlayer v-if="message" :url="message.fields.videoUrl" color="ffffff"></videoPlayer>
+      <slot name="body"></slot>
     </div>
     <button class="modal-close is-large" aria-label="close" @click="closeModal"></button>
   </div>
@@ -12,7 +12,7 @@
 import VideoPlayer from '~/components/video_player'
 export default {
   name: 'message-modal',
-  props: ['message', 'color', 'slug', 'modalVisible'],
+  props: ['color', 'modalVisible', 'header', 'footer'],
   components: {
     VideoPlayer
   },
@@ -30,7 +30,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+.modal {
+  z-index: 200;
+}
+.modal-content {
+  border-radius: 15px;
+  background: white;
+  padding: 1rem;
+}
 .mask {
   position: absolute;
   z-index: 100;
@@ -44,13 +51,13 @@ export default {
 .photo-wipe-enter-active, .photo-wipe-leave-active {
   transition: all 0.5s cubic-bezier(.97,0,.51,1);
 }
-.photo-wipe-enter, .photo-wipe-leave-active  {
+.photo-wipe-enter, .photo-wipe-leave-to  {
   transform: translate(0, 0)
 }
 .fade-in-enter-active, .fade-in-leave-active {
   transition: all 0.5s ease;
 }
-.fade-in-enter, .fade-in-leave-active  {
+.fade-in-enter, .fade-in-leave-to  {
   opacity: 0
 }
 </style>

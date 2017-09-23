@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <SiteNav :relative="true"></SiteNav>
     <nuxt/>
     <SiteFooter></SiteFooter>
@@ -19,5 +19,10 @@ export default {
 </script>
 
 <style lang="scss">
-
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
 </style>

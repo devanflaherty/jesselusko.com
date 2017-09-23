@@ -34,33 +34,79 @@ html, body {
 @import "components/nav";
 @import "components/buttons";
 
-.container-vh {
-  height: 100%;
-  width: 100%;
-  max-width: 100%!important;
-  min-height: 100vh;
-  display: flex;
-  padding: 0!important;
-  margin: 0;
-  > .columns {
-    margin-bottom: 0!important;
+section.section{
+  position: relative;
+  z-index: 10;
+  @include mobile {
+    padding-top: 1rem;
   }
 }
-#content > * {
-  @include tablet {
-    margin-top: 6rem;
+#messagePage {
+  @include desktop() {
+    padding-top: 8rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .container {
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 }
-.main {
-  @include tablet {
-    padding:0 3rem 0 2rem;
+#content {
+  padding-right: 0;
+  .main {
+    @include mobile {
+      padding: 0 3rem 0 0rem;
+    }
+    @include tablet {
+      padding:0 3rem 0 2rem;
+      margin-top: 4rem;
+    }
   }
 }
 
-.page-enter-active, .page-leave-active {
+.page-scale-enter-active, .page-scale-leave-active {
   transition: all 0.5s ease;
 }
-.page-enter, .page-leave-active  {
+.page-scale-leave-to  {
   opacity:0;
-  // transform: scale(0.9);
+  transform: scale(0.9);
+}
+
+.page-left-enter-active, .page-left-leave-active {
+  transition: all 0.5s cubic-bezier(.94,.34,.57, 2.45);
+}
+.page-left-enter {
+  opacity:0;
+  transform: translate(-200px, 0);
+}
+
+.slide-up-enter-active {
+  transition: all 0.5s 0.5s ease;
+}
+.slide-up-leave-active {
+  transition: all 0.25s ease;
+}
+.slide-up-enter, .slide-up-leave-to {
+  opacity:0;
+  transform: translate(0, 100px);
+}
+
+.slide-left-enter-active, .slide-left-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-left-enter, .slide-left-leave-active {
+  opacity:0;
+  transform: translate(100px, 0px);
+}
+
+.overlay-in-enter-active,
+.overlay-in-leave-active {
+  transition: all 0.5s ease;
+}
+.overlay-in-enter,
+.overlay-in-leave-active {
+  opacity: 0;
 }
