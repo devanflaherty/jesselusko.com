@@ -19,24 +19,24 @@ importScripts('workbox-sw.prod.v1.3.0.js');
  */
 const fileManifest = [
   {
-    "url": "/jesselusko.com/_nuxt/app.e0ac46d3e0c2305ad0cb.js",
-    "revision": "fba27ad4b2710bbc3ae27d93d73c13eb"
+    "url": "/jesselusko.com/_nuxt/app.1a14110bdde8106a1a20.js",
+    "revision": "2b4a22229a1a3095e014c818155f27a3"
   },
   {
     "url": "/jesselusko.com/_nuxt/common.5f6ab1c9b6d8ba9a5d43.js",
     "revision": "c9fcc8a1a2fcff7ecda3022147aff452"
   },
   {
-    "url": "/jesselusko.com/_nuxt/layouts/default.47116b7340642d5f787f.js",
-    "revision": "aac09b6f67e555f2993bc831b17f43fd"
+    "url": "/jesselusko.com/_nuxt/layouts/default.de3f75cd6fe1b84590e0.js",
+    "revision": "2be243ba2280b1a087dd25f0eb5f6139"
   },
   {
     "url": "/jesselusko.com/_nuxt/layouts/messages.2924dad7838d5be5dd63.js",
     "revision": "3d921d847268826c74bb58314f0c72aa"
   },
   {
-    "url": "/jesselusko.com/_nuxt/manifest.6731e1be5a8abe67368d.js",
-    "revision": "1f70d47a66b2397314c02792c8f332c6"
+    "url": "/jesselusko.com/_nuxt/manifest.cfef8dc0c546ca9fc8e8.js",
+    "revision": "b55602dee8eea9da5fb54033a120c7bd"
   },
   {
     "url": "/jesselusko.com/_nuxt/pages/bio.001d5ecf97be79fee675.js",
