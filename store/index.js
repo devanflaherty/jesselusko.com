@@ -5,7 +5,8 @@ const createStore = () => {
     state: {
       mobileVisible: false,
       fixedBody: false,
-      isMessage: false
+      isMessage: false,
+      isMobile: false
     },
     getters: {
       mobileVisibility: state => {
@@ -16,6 +17,9 @@ const createStore = () => {
       },
       isMessage: state => {
         return state.isMessage
+      },
+      isMobile: state => {
+        return state.isMobile
       }
     },
     mutations: {
@@ -27,6 +31,9 @@ const createStore = () => {
       },
       TOGGLE_MESSAGE_PAGE (state, bool) {
         state.isMessage = bool
+      },
+      IS_MOBILE (state, bool) {
+        state.isMobile = bool
       }
     },
     actions: {
@@ -43,6 +50,9 @@ const createStore = () => {
       },
       isMessage (context, bool) {
         context.commit('TOGGLE_MESSAGE_PAGE', bool)
+      },
+      isMobile (context, bool) {
+        context.commit('IS_MOBILE', bool)
       }
     }
   })

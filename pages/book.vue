@@ -221,8 +221,6 @@ export default {
     }
   },
   mounted () {
-    console.log(this.fields.name.valid)
-    // this.changeModalVis(true)
   }
 }
 </script>

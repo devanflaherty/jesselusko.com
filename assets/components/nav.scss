@@ -30,4 +30,7 @@
       color: rgba(0,0,0,0.5)
     }
   }
+  @include mobile() {
+    display: none;
+  }
 }

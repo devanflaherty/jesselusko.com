@@ -58,7 +58,7 @@ section.section{
   padding-right: 0;
   .main {
     @include mobile {
-      padding: 0 3rem 0 0rem;
+      padding: 0 0.5rem 0 0;
     }
     @include tablet {
       padding:0 3rem 0 2rem;

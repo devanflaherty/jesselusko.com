@@ -43,7 +43,7 @@ export default {
     flex: 1 0 auto;
     background-size: cover!important;
     background-position: center;
-    min-height: 400px;
+    min-height: 50vh;
     position: relative;
     overflow: hidden;
     h1 {

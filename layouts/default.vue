@@ -10,7 +10,7 @@
     </transition>
     <nuxt/>
     <transition name="fade-in" appear>
-      <SiteFooter v-if="isMessage"></SiteFooter>
+      <SiteFooter v-if="isMessage || isMobile"></SiteFooter>
     </transition>
   </div>
 </template>
@@ -27,12 +27,32 @@ export default {
     SiteFooter
   },
   computed: {
-    ...mapGetters(['isMessage'])
+    ...mapGetters(['isMessage', 'isMobile'])
+  },
+  methods: {
+    triggerMobile (w) {
+      console.log(w)
+      if (w > 770) {
+        this.$store.dispatch('isMobile', false)
+      } else if (w < 770) {
+        this.$store.dispatch('isMobile', true)
+      }
+    }
+  },
+  mounted () {
+    var w = window.innerWidth
+    this.triggerMobile(w)
+    window.onresize = () => {
+      w = window.innerWidth
+      this.triggerMobile(w)
+    }
   }
 }
 </script>
 
 <style lang="scss">
+@import "~bulma/bulma";
+
 .layout {
   display: flex;
   flex-direction: column;

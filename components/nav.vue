@@ -109,7 +109,6 @@ export default {
     var menu = document.getElementById('navMenu')
     window.onresize = () => {
       w = window.innerWidth
-      console.log(w)
       if (w > 1024) {
         this.$store.dispatch('fixBody', false)
         if (this.mobileVisibility) {
@@ -138,7 +137,7 @@ export default {
   white-space: nowrap;
 }
 nav.navbar {
-  position: absolute!important;
+  position: absolute;
   width: 100%;
   top:0;
   left: 0;
@@ -148,11 +147,29 @@ nav.navbar {
     height: 100%;
   }
   @include tablet {
+    position: fixed;
     right: 74px;
+  }
+  @include desktop {
+    position: absolute!important;
   }
   .navbar-brand {
     position: relative;
     z-index: 200;
+    .navbar-burger {
+      border-radius: 30px;
+      transition: all 0.33s ease;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+      height: 2.25rem;
+      width: 2.25rem;
+      @include mobile() {
+        background: $black;
+        span {
+          background: $white;
+        }
+      }
+    }
   }
   .navbar-menu {
     z-index: 100;
@@ -228,6 +245,9 @@ nav.navbar {
       border-top: 2px solid $primary;
       color: $black;
     }
+    @include touch() {
+      border-top: none!important;
+    }
     span {
       position: relative;
       z-index: 10;
@@ -255,7 +275,6 @@ nav.navbar {
   opacity: 1;
   transform: translate(0,0)
 }
-
 
 .nav-fade-in-enter-active, .nav-fade-in-leave-active {
   transition: all 0.5s .5s ease;
