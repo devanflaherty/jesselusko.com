@@ -19,56 +19,52 @@ importScripts('workbox-sw.prod.v1.3.0.js');
  */
 const fileManifest = [
   {
-    "url": "/jesselusko.com/_nuxt/app.1a14110bdde8106a1a20.js",
-    "revision": "2b4a22229a1a3095e014c818155f27a3"
+    "url": "/jesselusko.com/_nuxt/app.31bf35659c8ba77648f9.js",
+    "revision": "0b113afe290272f14a34903cdeb0f444"
   },
   {
-    "url": "/jesselusko.com/_nuxt/common.5f6ab1c9b6d8ba9a5d43.js",
-    "revision": "c9fcc8a1a2fcff7ecda3022147aff452"
+    "url": "/jesselusko.com/_nuxt/common.8a46d3942ebd229a0666.js",
+    "revision": "b5d3273e8145b4ced41c4ffe0db43fae"
   },
   {
-    "url": "/jesselusko.com/_nuxt/layouts/default.de3f75cd6fe1b84590e0.js",
-    "revision": "2be243ba2280b1a087dd25f0eb5f6139"
+    "url": "/jesselusko.com/_nuxt/layouts/default.bf7ced59a517788f3eda.js",
+    "revision": "7966394c1c326da39e506220ebdefbee"
   },
   {
-    "url": "/jesselusko.com/_nuxt/layouts/messages.2924dad7838d5be5dd63.js",
-    "revision": "3d921d847268826c74bb58314f0c72aa"
+    "url": "/jesselusko.com/_nuxt/manifest.142851a2921e984b8db5.js",
+    "revision": "e313a64a50257155e5cfadb591b06c6b"
   },
   {
-    "url": "/jesselusko.com/_nuxt/manifest.cfef8dc0c546ca9fc8e8.js",
-    "revision": "b55602dee8eea9da5fb54033a120c7bd"
+    "url": "/jesselusko.com/_nuxt/pages/bio.8e9e5ea825dd343ce9c5.js",
+    "revision": "53a60f3c8c18bed953c07411ee44c1c6"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/bio.001d5ecf97be79fee675.js",
-    "revision": "6ae50355f05c651191b58ff9f1017ff9"
+    "url": "/jesselusko.com/_nuxt/pages/book.37b35701d225a42070f3.js",
+    "revision": "7fc9902a075018d4afee00579ea729f4"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/book.bdd2e4b7a36138cc6d03.js",
-    "revision": "691c5300a1fc1eeb8ae2da9347bfa800"
+    "url": "/jesselusko.com/_nuxt/pages/index.8b26665b6cbd871a6fdd.js",
+    "revision": "793ac66f4dc4cb41bcafbf65233f777b"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/index.3c9d779b415ede386b99.js",
-    "revision": "5d441bce505efe351ef2bc5d6cf320b0"
+    "url": "/jesselusko.com/_nuxt/pages/messages/_series.c83a741ae69eefcb97d5.js",
+    "revision": "db025480f511e2d3ab75ec0cffd32c90"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/messages/_series.f22347e47ce92d3fb1f9.js",
-    "revision": "740012c5ef390d9d46813938ae15f96a"
+    "url": "/jesselusko.com/_nuxt/pages/messages/_series/_message.d3c1d5ab2d7321d290b8.js",
+    "revision": "fd944df7578dad5a759ded45774c81bc"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/messages/_series/_message.8b6e540eddb6c9591460.js",
-    "revision": "dd616b1f2fbf34dac4161aa6aa953ddb"
+    "url": "/jesselusko.com/_nuxt/pages/messages/_series/_message/index.1dc7f5ba3a6292198d27.js",
+    "revision": "cf0e57bc27b81cf12378b4858ec6138a"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/messages/_series/_message/index.87472011422184712aaa.js",
-    "revision": "278a74bf01259bf505e0e79916f1fb95"
+    "url": "/jesselusko.com/_nuxt/pages/messages/_series/index.6a82207725d26ea99883.js",
+    "revision": "815d475cfe76a20fb1a3af5c5cd95b78"
   },
   {
-    "url": "/jesselusko.com/_nuxt/pages/messages/_series/index.88a38a533aafcc7035f4.js",
-    "revision": "0df5e37982903d8fb8bf41590ebf3729"
-  },
-  {
-    "url": "/jesselusko.com/_nuxt/pages/messages/index.5cf9b4f7b66b67c948b1.js",
-    "revision": "c49dc5be3f347aa6c98e6c1613700075"
+    "url": "/jesselusko.com/_nuxt/pages/messages/index.45c9a5cffdabac3789f1.js",
+    "revision": "946f5482ab0b861a98b750345a0ccd50"
   }
 ];
 
