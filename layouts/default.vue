@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     triggerMobile (w) {
-      console.log(w)
       if (w > 770) {
         this.$store.dispatch('isMobile', false)
       } else if (w < 770) {

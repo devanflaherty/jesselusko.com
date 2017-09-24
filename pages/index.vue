@@ -11,7 +11,7 @@
             v-on:leave="leave">
             <article class="columns is-multiline" key="welcome" :data-index="1">
               <div class="column">
-                <h2 class="is-half">Welcome</h2>
+                <h2>Welcome</h2>
                 <p>Jesse Lusko is pastor, speaker and evangelist. Learn more about his story by watching the video below.</p>
               </div>
             </article>

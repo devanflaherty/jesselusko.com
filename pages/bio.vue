@@ -10,8 +10,8 @@
             v-on:enter="enter"
             v-on:leave="leave">
             <article class="columns is-multiline" key="bio" :data-index="1">
-              <div class="column is-two-thirds">
-                <h2 class="is-half">Bio</h2>
+              <div class="column is-12">
+                <h2>Bio</h2>
                 <p>Jesse Lusko is pastor, speaker and evangelist. Jesus got a hold of his soul at a young age and gave him an unrelenting passion to bring people real life in the gospel, not just dead religion. He served as a youth pastor for six years and was trained to teach the Bible by Pastor Skip Heitzig at Calvary Albuquerque in New Mexico.  He and his wife Rebekah enjoy clever movies, exploring cities, and watching their son, Lyon, melt the tough exteriors of strangers.</p>
               </div>
             </article>

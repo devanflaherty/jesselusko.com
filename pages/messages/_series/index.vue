@@ -37,6 +37,7 @@ const client = createClient()
 const pluralize = require('pluralize')
 
 export default {
+  scrollToTop: true,
   components: {
     PhotoPanel,
     MessageCard
@@ -65,9 +66,6 @@ export default {
     pluralMe (str, count, bool) {
       return pluralize(str, count, bool)
     }
-  },
-  created () {
-    console.log(this.series)
   }
 }
 </script>

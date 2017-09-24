@@ -5,7 +5,7 @@
 <script>
 export default {
   transition: {
-    name: 'page',
+    name: 'fade-in',
     mode: 'out-in'
   }
 }

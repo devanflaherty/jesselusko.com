@@ -2,7 +2,7 @@
 // 1. Import the initial variables
 $--columnGap: 20px;
 @import "~bulma/sass/utilities/initial-variables";
-
+@import url('https://rsms.me/inter/inter-ui.css');
 // 2. Set your own initial variables
 // Update blue
 $blue: #72d0eb;
@@ -10,7 +10,7 @@ $blue: #72d0eb;
 $green: #005236;
 $green-invert: #fff;
 // Add a serif family
-$sans: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+$sans: 'Inter UI',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 $serif: "Georgia", serif;
 
 // 3. Set the derived variables
@@ -58,9 +58,13 @@ section.section{
   padding-right: 0;
   .main {
     @include mobile {
-      padding: 0 0.5rem 0 0;
+      padding: 0 1rem 0 0;
     }
     @include tablet {
+      padding:0 3rem 0 2rem;
+      margin-top: 2rem;
+    }
+    @include desktop {
       padding:0 3rem 0 2rem;
       margin-top: 4rem;
     }

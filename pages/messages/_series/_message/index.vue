@@ -23,6 +23,7 @@ import {createClient} from '~/plugins/contentful.js'
 const client = createClient()
 
 export default {
+  scrollToTop: true,
   transition: {
     name: 'page-left'
   },
@@ -48,5 +49,12 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import '../../../../assets/main';
+.section {
+  padding-top: 6rem;
+  @include mobile() {
+    padding-top: 4rem!important;
+  }
+}
 </style>

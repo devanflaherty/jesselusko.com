@@ -78,9 +78,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../../assets/main';
 .section {
   position: relative;
   z-index: 10;
+  @include mobile() {
+    padding-top: 4rem!important;
+  }
 }
 .box {
   overflow: hidden;

@@ -40,7 +40,6 @@ export default {
   },
   created () {
     if (this.message.fields.videoUrl) {
-      console.log(this.token)
       axios.get(`https://api.vimeo.com/videos/${this.videoId}`, {
         headers: {
           'Authorization': 'Bearer ' + '4b1c131e6b72a9c33c598dc6c83b61f3'

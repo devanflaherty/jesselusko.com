@@ -9,8 +9,7 @@ const client = createClient()
 
 export default {
   transition: {
-    name: 'page-scale',
-    mode: 'out-in'
+    name: 'fade-in'
   },
   asyncData ({ env, params }) {
     return Promise.all([

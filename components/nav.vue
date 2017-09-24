@@ -44,7 +44,7 @@ export default {
   name: 'nav',
   props: ['relative'],
   computed: {
-    ...mapGetters(['mobileVisibility', 'fixedBody'])
+    ...mapGetters(['mobileVisibility', 'fixedBody', 'isMobile'])
   },
   methods: {
     showMobile (e) {
@@ -107,6 +107,11 @@ export default {
   mounted () {
     var w = window.innerWidth
     var menu = document.getElementById('navMenu')
+
+    if (!this.mobileVisibility && this.isMobile) {
+      menu.style.display = 'none'
+    }
+
     window.onresize = () => {
       w = window.innerWidth
       if (w > 1024) {
