@@ -28,7 +28,6 @@ module.exports = {
     ]
   },
   router: {
-    base: '/jesselusko.com/',
     middleware: ['mobileToggle', 'toggleMessagePage']
   },
   css: [
