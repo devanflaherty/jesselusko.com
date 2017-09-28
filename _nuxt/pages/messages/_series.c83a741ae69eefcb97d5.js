@@ -1,0 +1,2 @@
+webpackJsonp([8],{Nz4H:function(e,t,n){"use strict";t.a={transition:{name:"fade-in",mode:"out-in"}}},SD8h:function(e,t,n){"use strict";var r=function(){var e=this,t=e.$createElement;return(e._self._c||t)("nuxt-child",{key:e.$route.path})},u=[],a={render:r,staticRenderFns:u};t.a=a},wsXV:function(e,t,n){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var r=n("Nz4H"),u=n("SD8h"),a=n("VU/8"),i=a(r.a,u.a,null,null,null);t.default=i.exports}});
+//# sourceMappingURL=_series.c83a741ae69eefcb97d5.js.map
