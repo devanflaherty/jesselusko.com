@@ -1,10 +1,11 @@
 <template>
   <transition name="fade-in" appear>
-    <article class="video-wrapper" v-show="videoReady">
-      <transition name="photo-wipe">
-        <div class="mask" :style="`background-color: ${color}`" v-if="!videoReady"></div>
+    <article class="video-wrapper">
+      <transition name="photo-wipe-inverse" appear>
+        <div class="mask inverse" :style="`background-color: ${color}`"></div>
       </transition>
-      <vimeo-player ref="player" :video-id="id" @ready="onReady"></vimeo-player>
+      <iframe :src="`https://player.vimeo.com/video/${id}`" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+      <!-- <vimeo-player ref="player" :video-id="id" @ready="onReady"></vimeo-player> -->
     </article>
   </transition>
 </template>

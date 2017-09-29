@@ -67,14 +67,14 @@ module.exports = {
         // return data that should be available
         // in the template
         var sarr = series.items.map((s) => {
-          return `/messages/${s.fields.slug}`
+          return `/${s.fields.slug}`
         })
 
         var marr = []
         series.items.forEach( s => {
           if (s.fields.messages) {
             marr = s.fields.messages.map((m) => {
-              return `/messages/${s.fields.slug}/${m.fields.slug}`
+              return `/${s.fields.slug}/${m.fields.slug}`
             })
           }
         })

@@ -3,7 +3,7 @@
     <div class="container">
       <div class="columns">
         <div class="column is-4">
-          <h2>Messages</h2>
+          <h2>Series</h2>
         </div>
       </div>
       <transition-group name="staggered" tag="div" class="columns is-multiline" appear v-if="series.length > 0"
@@ -47,7 +47,7 @@ export default {
   methods: {
     beforeEnter (el) {
       TweenMax.set(el, {
-        opacity: 0,
+        autoAlpha: 0,
         y: 100
       })
     },
@@ -55,7 +55,7 @@ export default {
       var delay = el.dataset.index * 150
       setTimeout(function () {
         TweenMax.to(el, 1, {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           ease: Back.easeOut
         })
@@ -66,7 +66,7 @@ export default {
       var delay = el.dataset.index * 150
       setTimeout(function () {
         TweenMax.to(el, 1, {
-          opacity: 0,
+          autoAlpha: 0,
           y: 100,
           ease: Back.easeIn
         })
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../../assets/main';
+@import '../assets/main';
 .section {
   position: relative;
   z-index: 10;

@@ -6,7 +6,7 @@
           <videoPlayer :url="message.fields.videoUrl" color="ffffff"></videoPlayer>
         </div>
         <div class="column is-4">
-          <nuxt-link :to="`/messages/${series.fields.slug}`" >Back to {{series.fields.title}}</nuxt-link>
+          <nuxt-link :to="`/${series.fields.slug}`" >Back to {{series.fields.title}}</nuxt-link>
           <h2>{{message.fields.title}}</h2>
           <h4 v-if="message.fields.scripture">{{message.fields.scripture}}</h4>
           <p v-if="message.fields.description">{{message.fields.description}}</p>
@@ -25,31 +25,38 @@ const client = createClient()
 export default {
   scrollToTop: true,
   transition: {
-    name: 'page-left'
+    name: 'fade-in'
   },
   components: {
     VideoPlayer
   },
-  props: ['series'],
   asyncData ({env, params}) {
     return Promise.all([
       client.getEntries({
         'content_type': 'messages',
         'fields.slug': params.message
+      }),
+      client.getEntries({
+        'content_type': 'series',
+        'fields.slug': params.seriesSlug
       })
-    ]).then(([message]) => {
+    ]).then(([message, series]) => {
       // return data that should be available
       // in the template
       return {
-        message: message.items[0]
+        message: message.items[0],
+        series: series.items[0]
       }
     }).catch(console.error)
+  },
+  mounted () {
+    console.log(this.$route.name)
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../../../assets/main';
+@import '../../assets/main';
 .section {
   padding-top: 6rem;
   @include mobile() {

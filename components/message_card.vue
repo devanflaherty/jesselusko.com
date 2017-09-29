@@ -1,6 +1,6 @@
 <template>
   <article class="message-card" :style="`background-color: ${color}`">
-    <nuxt-link :to="`/messages/${slug}/${message.fields.slug}`">
+    <nuxt-link :to="`/${slug}/${message.fields.slug}`">
       <transition name="photo-wipe">
         <div class="mask" :style="`background-color: ${color}`" v-if="loading"></div>
       </transition>

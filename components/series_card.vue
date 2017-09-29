@@ -1,6 +1,6 @@
 <template>
   <transition name="scale-in" appear>
-    <nuxt-link class="series-card" :to="`/messages/${series.fields.slug}`" v-if="!$route.params.series">
+    <nuxt-link class="series-card" :to="`/${series.fields.slug}`" v-if="!$route.params.series">
       <transition name="photo-wipe">
         <div class="mask" :style="`background-color: ${series.fields.color}`" v-if="loading"></div>
       </transition>
