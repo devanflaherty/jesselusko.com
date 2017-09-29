@@ -193,7 +193,7 @@ export default {
     },
     beforeEnter: function (el) {
       TweenMax.set(el, {
-        opacity: 0,
+        autoAlpha: 0,
         y: 100
       })
     },
@@ -201,7 +201,7 @@ export default {
       var delay = el.dataset.index * 150
       setTimeout(function () {
         TweenMax.to(el, 1, {
-          opacity: 1,
+          autoAlpha: 1,
           y: 0,
           ease: Back.easeOut
         })
@@ -212,7 +212,7 @@ export default {
       var delay = el.dataset.index * 150
       setTimeout(function () {
         TweenMax.to(el, 1, {
-          opacity: 0,
+          autoAlpha: 0,
           y: 100,
           ease: Back.easeIn
         })

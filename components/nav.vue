@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar" :class="{'relative' : relative, 'is-active': mobileVisibility}">
     <div class="navbar-brand">
-      <a id="logo" class="navbar-item" href="http://bulma.io" v-if="relative">
+      <nuxt-link id="logo" class="navbar-item" to="/" v-if="relative">
         Jesse Lusko
-      </a>
+      </nuxt-link>
       <div class="navbar-burger burger" :class="{'is-active': mobileVisibility}" data-target="navMenu" @click="showMobile">
         <span></span>
         <span></span>
@@ -24,7 +24,7 @@
           <nuxt-link class="navbar-item " to="/bio" key="bio" :data-index="2">
             <span>Bio</span>
           </nuxt-link>
-          <nuxt-link class="navbar-item " to="/messages" key="messages" :data-index="3">Messages</nuxt-link>
+          <nuxt-link class="navbar-item " to="/series" key="messages" :data-index="3">Messages</nuxt-link>
           <nuxt-link class="navbar-item " to="/book" key="book" :data-index="4">Book Me</nuxt-link>
         </transition-group>
 

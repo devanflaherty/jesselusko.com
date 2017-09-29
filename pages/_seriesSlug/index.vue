@@ -52,7 +52,7 @@ export default {
     return Promise.all([
       client.getEntries({
         'content_type': 'series',
-        'fields.slug': params.series
+        'fields.slug': params.seriesSlug
       })
     ]).then(([series]) => {
       // return data that should be available
@@ -66,6 +66,9 @@ export default {
     pluralMe (str, count, bool) {
       return pluralize(str, count, bool)
     }
+  },
+  mounted () {
+    console.log(this.$route.name)
   }
 }
 </script>
