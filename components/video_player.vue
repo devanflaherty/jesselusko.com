@@ -2,7 +2,7 @@
   <transition name="fade-in" appear>
     <article class="video-wrapper" v-show="videoReady">
       <transition name="photo-wipe">
-        <div class="mask" :style="`background-color: ${color}`" v-if="videoReady"></div>
+        <div class="mask" :style="`background-color: ${color}`" v-if="!videoReady"></div>
       </transition>
       <vimeo-player ref="player" :video-id="id" @ready="onReady"></vimeo-player>
     </article>

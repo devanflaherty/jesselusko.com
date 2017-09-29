@@ -8,7 +8,7 @@
         <div class="column is-7 flex-center">
           <span>Pastor. Speaker. Evangelist</span>
         </div>
-        <div class="column flex-center">
+        <div class="column flex-center" v-if="breakpoint > 1 || isMessage || $route.name == 'messages-series'">
           <nuxt-link to="/book" class="button is-primary is-expanded">Request a Booking</nuxt-link>
         </div>
         <div id="socialIcons" class="column is-narrow">
@@ -21,8 +21,11 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-
+  computed: {
+    ...mapGetters(['breakpoint', 'isMessage'])
+  }
 }
 </script>
 
@@ -60,17 +63,19 @@ footer {
     z-index: 0;
     bottom: 0;
     left: 0;
-    font-family: SFProDisplay-Bold;
     font-size: 220px;
     line-height: .75;
     color: #eaeaea;
     letter-spacing: -10px;
     transition: all 0.5s ease;
+    font-weight: 800;
     @include mobile() {
-      font-size: 160px;
+      letter-spacing: -5px;
+      font-size: 130px;
       position: absolute!important;
     }
     @include tablet() {
+      letter-spacing: -10px;
       position: fixed;
       font-size: 220px;
     }

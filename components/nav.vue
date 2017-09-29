@@ -44,29 +44,61 @@ export default {
   name: 'nav',
   props: ['relative'],
   computed: {
-    ...mapGetters(['mobileVisibility', 'fixedBody', 'isMobile'])
+    ...mapGetters(['breakpoint', 'mobileVisibility'])
+  },
+  watch: {
+    mobileVisibility (bool) {
+      if (bool === false && this.breakpoint === 1) {
+        this.closeMobile()
+      }
+    },
+    breakpoint (newValue, oldValue) {
+      var menu = document.getElementById('navMenu')
+      if (oldValue === 2 && newValue >= 3) {
+        if (this.mobileVisibility) {
+          this.closeMobile('block', 50)
+        } else {
+          menu.style.display = 'block'
+        }
+      } else if (oldValue >= 3 && newValue < 3) {
+        menu.style.display = 'none'
+      }
+    }
   },
   methods: {
-    showMobile (e) {
-      this.$store.dispatch('fixBody', !this.fixedBody)
-      var target = e.currentTarget.dataset.target
-      var menu = document.getElementById(target)
+    closeMobile (display, delay) {
+      this.$store.dispatch('fixBody', false)
+      var menu = document.getElementById('navMenu')
       var body = document.querySelector('body')
-
-      if (this.mobileVisibility) {
-        body.style.overflow = 'auto'
-        body.style.height = '100%'
+      if (!display) {
+        display = 'none'
+      }
+      if (!delay) {
+        delay = 500
+      }
+      body.style.overflow = 'auto'
+      body.style.height = '100%'
+      this.$store.dispatch('toggleMobile', false)
+      setTimeout(() => {
+        menu.style.display = display
+      }, delay)
+    },
+    openMobile () {
+      this.$store.dispatch('fixBody', true)
+      var menu = document.getElementById('navMenu')
+      var body = document.querySelector('body')
+      body.style.overflow = 'hidden'
+      body.style.height = '100vh'
+      menu.style.display = 'flex'
+      setTimeout(() => {
         this.$store.dispatch('toggleMobile', !this.mobileVisibility)
-        setTimeout(() => {
-          menu.style.display = 'none'
-        }, 500)
+      }, 10)
+    },
+    showMobile () {
+      if (this.mobileVisibility) {
+        this.closeMobile()
       } else {
-        body.style.overflow = 'hidden'
-        body.style.height = '100vh'
-        menu.style.display = 'flex'
-        setTimeout(() => {
-          this.$store.dispatch('toggleMobile', !this.mobileVisibility)
-        }, 10)
+        this.openMobile()
       }
     },
     beforeEnter (el) {
@@ -101,31 +133,6 @@ export default {
           })
           done()
         }, delay)
-      }
-    }
-  },
-  mounted () {
-    var w = window.innerWidth
-    var menu = document.getElementById('navMenu')
-
-    if (!this.mobileVisibility && this.isMobile) {
-      menu.style.display = 'none'
-    }
-
-    window.onresize = () => {
-      w = window.innerWidth
-      if (w > 1024) {
-        this.$store.dispatch('fixBody', false)
-        if (this.mobileVisibility) {
-          document.body.style.overflow = 'auto'
-          document.body.style.height = '100%'
-          this.$store.dispatch('toggleMobile', !this.mobileVisibility)
-          setTimeout(() => {
-            menu.style.display = 'block'
-          }, 500)
-        }
-      } else if (w < 1024) {
-        menu.style.display = 'none'
       }
     }
   }

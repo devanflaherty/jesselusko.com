@@ -40,7 +40,6 @@ export default {
     ]).then(([message]) => {
       // return data that should be available
       // in the template
-      console.log(message)
       return {
         message: message.items[0]
       }

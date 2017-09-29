@@ -1,8 +1,8 @@
 <template>
   <transition name="scale-in" appear>
     <nuxt-link class="series-card" :to="`/messages/${series.fields.slug}`" v-if="!$route.params.series">
-      <transition name="photo-wipe" appear>
-        <div class="mask" :style="`background-color: ${series.fields.color}`"></div>
+      <transition name="photo-wipe">
+        <div class="mask" :style="`background-color: ${series.fields.color}`" v-if="loading"></div>
       </transition>
       <div class="flex" :class="{'show-title' : showTitle}" @mouseenter="showSeriesTitle(true)" @mouseleave="showSeriesTitle(false)">
         <div class="show-card" :style="`background-color:${series.fields.color}`"></div>
@@ -11,7 +11,7 @@
           <span v-if="series.fields.messages">{{pluralMe('Message', series.fields.messages.length, true)}}</span>
         </div>
       </div>
-      <img :src="series.fields.thumbnail.fields.file.url">
+      <img v-lazy="series.fields.thumbnail.fields.file.url">
     </nuxt-link>
   </transition>
 </template>
@@ -24,6 +24,7 @@ export default {
   props: ['series'],
   data () {
     return {
+      loading: true,
       showTitle: false
     }
   },
@@ -38,6 +39,11 @@ export default {
     showSeriesTitle (bool) {
       this.showTitle = bool
     }
+  },
+  mounted () {
+    this.$Lazyload.$on('loaded', () => {
+      this.loading = false
+    })
   }
 }
 </script>
@@ -50,11 +56,18 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  padding-top: 75%;
   img {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     width: 100%;
     height: auto;
     margin: 0;
+  }
+  .mask {
+    z-index: 10;
   }
   .flex {
     position: absolute;
@@ -66,6 +79,7 @@ export default {
     width: 100%;
     height: 100%;
     transition: all 0.5s ease;
+    z-index: 10;
     .show-card {
       position: absolute;
       display: block;

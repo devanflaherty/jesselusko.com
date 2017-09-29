@@ -85,7 +85,8 @@ module.exports = {
   },
   plugins: [
     {src: '~plugins/vee-validate.js', ssr: true},
-    { src: `~plugins/vimeo-player`, ssr: false }
+    { src: `~plugins/vimeo-player`, ssr: false },
+    { src: `~plugins/vue-lazyload`, ssr: false }
   ],
   build: {
     /*
@@ -106,6 +107,6 @@ module.exports = {
         'postcss-custom-properties': false
       }
     },
-    vendor: ['vue-vimeo-player', 'vee-validate']
+    vendor: ['vue-vimeo-player', 'vee-validate', 'vue-lazyload']
   }
 }

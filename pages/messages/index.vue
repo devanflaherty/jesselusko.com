@@ -11,7 +11,7 @@
         v-on:before-enter="beforeEnter"
         v-on:enter="enter"
         v-on:leave="leave">
-        <div class="column is-4" v-for="(s, index) in series" :key="index" :data-index="index">
+        <div class="column is-4 series-block" v-for="(s, index) in series" :key="index" :data-index="index">
           <SeriesCard :series="s"></SeriesCard>
         </div>
       </transition-group>
@@ -85,6 +85,9 @@ export default {
   @include mobile() {
     padding-top: 4rem!important;
   }
+}
+.series-block {
+  opacity: 0;
 }
 .box {
   overflow: hidden;

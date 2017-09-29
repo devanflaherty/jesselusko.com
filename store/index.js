@@ -6,7 +6,7 @@ const createStore = () => {
       mobileVisible: false,
       fixedBody: false,
       isMessage: false,
-      isMobile: false
+      breakpoint: 0
     },
     getters: {
       mobileVisibility: state => {
@@ -18,8 +18,8 @@ const createStore = () => {
       isMessage: state => {
         return state.isMessage
       },
-      isMobile: state => {
-        return state.isMobile
+      breakpoint: state => {
+        return state.breakpoint
       }
     },
     mutations: {
@@ -32,8 +32,8 @@ const createStore = () => {
       TOGGLE_MESSAGE_PAGE (state, bool) {
         state.isMessage = bool
       },
-      IS_MOBILE (state, bool) {
-        state.isMobile = bool
+      CHANGE_BREAKPOINT (state, bp) {
+        state.breakpoint = bp
       }
     },
     actions: {
@@ -51,8 +51,8 @@ const createStore = () => {
       isMessage (context, bool) {
         context.commit('TOGGLE_MESSAGE_PAGE', bool)
       },
-      isMobile (context, bool) {
-        context.commit('IS_MOBILE', bool)
+      changeBreakpoint (context, bp) {
+        context.commit('CHANGE_BREAKPOINT', bp)
       }
     }
   })

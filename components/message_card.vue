@@ -1,18 +1,12 @@
 <template>
   <article class="message-card" :style="`background-color: ${color}`">
     <nuxt-link :to="`/messages/${slug}/${message.fields.slug}`">
-      <transition name="photo-wipe" appear v-if="!loading">
-        <div class="mask" :style="`background-color: ${color}`"></div>
+      <transition name="photo-wipe">
+        <div class="mask" :style="`background-color: ${color}`" v-if="loading"></div>
       </transition>
-      <template v-if="!loading">
-        <transition name="fade-in" appear>
-          <img :src="thumb">
-        </transition>
-      </template>
-
-      <template v-else>
-        <div class="loader"></div>
-      </template>
+      <transition name="fade-in">
+        <img :src="thumb" width="320" height="180">
+      </transition>
     </nuxt-link>
   </article>
 </template>
@@ -78,6 +72,8 @@ export default {
     }
     img {
       display: block;
+      width: 100%;
+      height: auto;
     }
     .is-loading {
       display: block;

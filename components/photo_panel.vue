@@ -1,9 +1,9 @@
 <template>
-  <div class="fold-container">
-    <transition name="fade-up" appear>
-      <div class="photo-fold" :style="`background: url(${img}); background-position: ${mobileImg}`">
-        <transition name="photo-wipe" appear>
-          <div class="mask" :style="`background-color: ${color}`"></div>
+  <transition name="fade-up" appear>
+    <div class="fold-container" :style="`background-color: ${color}`">
+      <div class="photo-fold" v-lazy:background-image="img" :style="`background-position: ${mobileImg}`">
+        <transition name="photo-wipe">
+          <div class="mask" :style="`background-color: ${color};`" v-if="loading"></div>
         </transition>
         <div class="fold-footer">
           <transition name="fade-in" appear>
@@ -11,13 +11,26 @@
           </transition>
         </div>
       </div>
-    </transition>
-  </div>
+    </div>
+  </transition>
 </template>
 <script>
 export default {
   name: 'photo-panel',
-  props: ['img', 'color', 'mobile-img']
+  props: ['img', 'color', 'mobile-img'],
+  data () {
+    return {
+      loading: false
+    }
+  },
+  created () {
+    this.loading = true
+  },
+  mounted () {
+    this.$Lazyload.$on('loaded', () => {
+      this.loading = false
+    })
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -39,6 +52,18 @@ export default {
     width: 100%;
     height: 50vh;
   }
+  .loaded {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    padding: 0;
+    transition: height 0.5s ease;
+    @include mobile(){
+      position: relative;
+      width: 100%;
+      height: 50vh;
+    }
+  }
   .photo-fold {
     flex: 1 0 auto;
     background-size: cover!important;
@@ -48,16 +73,17 @@ export default {
     overflow: hidden;
     h1 {
       position: absolute;
-      z-index: 0;
+      z-index: 2;
       bottom: 1rem;
       left: 1rem;
-      font-family: SFProDisplay-Bold;
       font-size: 220px;
       line-height: .75;
       color: #eaeaea;
       transition: all 0.5s ease;
+      font-weight: 800;
       @include mobile(){
         font-size: 120px;
+        letter-spacing: -3px;
       }
       @include tablet(){
         font-size: 120px;
@@ -69,12 +95,5 @@ export default {
       }
     }
   }
-}
-
-.photo-wipe-enter-active, .photo-wipe-leave-active {
-  transition: all 0.5s cubic-bezier(.97,0,.51,1);
-}
-.photo-wipe-enter, .photo-wipe-leave-to  {
-  transform: translate(0, 0)
 }
 </style>

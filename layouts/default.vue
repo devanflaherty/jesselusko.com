@@ -10,7 +10,7 @@
     </transition>
     <nuxt/>
     <transition name="fade-in" appear>
-      <SiteFooter v-if="isMessage || isMobile"></SiteFooter>
+      <SiteFooter v-if="isMessage || breakpoint == 1"></SiteFooter>
     </transition>
   </div>
 </template>
@@ -27,23 +27,44 @@ export default {
     SiteFooter
   },
   computed: {
-    ...mapGetters(['isMessage', 'isMobile'])
+    ...mapGetters(['breakpoint', 'isMessage'])
   },
   methods: {
-    triggerMobile (w) {
-      if (w > 770) {
-        this.$store.dispatch('isMobile', false)
-      } else if (w < 770) {
-        this.$store.dispatch('isMobile', true)
+    setBreakpoint (w) {
+      if (w <= 768) {
+        // mobile
+        if (this.breakpoint !== 1) {
+          this.$store.dispatch('changeBreakpoint', 1)
+        }
+      } else if (w > 768 && w < 1008) {
+        // tablet
+        if (this.breakpoint !== 2) {
+          this.$store.dispatch('changeBreakpoint', 2)
+        }
+      } else if (w >= 1008 && w < 1200) {
+        // desktop
+        if (this.breakpoint !== 3) {
+          this.$store.dispatch('changeBreakpoint', 3)
+        }
+      } else if (w >= 1200 && w < 1392) {
+        // widescreen
+        if (this.breakpoint !== 4) {
+          this.$store.dispatch('changeBreakpoint', 4)
+        }
+      } else if (w >= 1392) {
+        // fullhd
+        if (this.breakpoint !== 5) {
+          this.$store.dispatch('changeBreakpoint', 5)
+        }
       }
     }
   },
   mounted () {
     var w = window.innerWidth
-    this.triggerMobile(w)
+    this.setBreakpoint(w)
     window.onresize = () => {
       w = window.innerWidth
-      this.triggerMobile(w)
+      this.setBreakpoint(w)
     }
   }
 }
