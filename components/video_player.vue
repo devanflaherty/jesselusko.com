@@ -22,8 +22,13 @@ export default {
     id () {
       const url = this.url
       const urlLength = url.length
-      const stripL = urlLength - 9
-      var res = url.substring(stripL, urlLength)
+      var res = ''
+      if (urlLength > 9) {
+        const stripL = urlLength - 9
+        res = url.substring(stripL, urlLength)
+      } else {
+        res = this.url
+      }
 
       return res
     }

@@ -4,9 +4,14 @@
       <transition name="photo-wipe">
         <div class="mask" :style="`background-color: ${color}`" v-if="loading"></div>
       </transition>
-      <transition name="fade-in">
-        <img :src="thumb" width="320" height="180">
-      </transition>
+      <template v-if="!loading">
+        <transition name="fade-in">
+          <img :src="thumb" width="320" height="180" v-if="!loading">
+        </transition>
+      </template>
+      <template v-else>
+        <div class="loader"></div>
+      </template>
     </nuxt-link>
   </article>
 </template>
@@ -77,6 +82,10 @@ export default {
     }
     .is-loading {
       display: block;
+    }
+    .loader {
+      position: relative;
+      z-index: 1;
     }
   }
 }

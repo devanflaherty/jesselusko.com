@@ -18,7 +18,7 @@
 
             <article id="video" class="columns" key="video" :data-index="2">
               <div class="column">
-                <VideoPlayer url="https://player.vimeo.com/video/233254026" color="e51717"></VideoPlayer>
+                <VideoPlayer url="233254026" color="e51717"></VideoPlayer>
               </div>
             </article>
 
