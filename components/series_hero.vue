@@ -28,7 +28,7 @@ export default {
   position: fixed;
   z-index: 10;
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   left: 0;
   display: flex;

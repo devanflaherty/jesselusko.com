@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section v-if="series">
     <PhotoPanel :img="series.fields.thumbnail.fields.file.url" :color="series.fields.color" mobile-img="center"></PhotoPanel>
 
     <section class="section">
@@ -37,6 +37,9 @@ const client = createClient()
 const pluralize = require('pluralize')
 
 export default {
+  transition: {
+    name: 'page-scale'
+  },
   scrollToTop: true,
   components: {
     PhotoPanel,
@@ -45,10 +48,22 @@ export default {
   data () {
     return {
       selectedMessage: null,
-      token: null
+      token: null,
+      series: {
+        fields: {
+          thumbnail: {
+            fields: {
+              file: {
+                url: ''
+              }
+            }
+          }
+        }
+      },
+      error: null
     }
   },
-  asyncData ({env, params}) {
+  asyncData ({env, params, error}) {
     return Promise.all([
       client.getEntries({
         'content_type': 'series',
@@ -57,18 +72,21 @@ export default {
     ]).then(([series]) => {
       // return data that should be available
       // in the template
-      return {
-        series: series.items[0]
+      if (series.items.length > 0) {
+        return {
+          series: series.items[0]
+        }
+      } else {
+        error({statusCode: 404, message: 'The series you are looking for does not exist.'})
       }
-    }).catch(console.error)
+    }).catch(err => {
+      console.error(err)
+    })
   },
   methods: {
     pluralMe (str, count, bool) {
       return pluralize(str, count, bool)
     }
-  },
-  mounted () {
-    console.log(this.$route.name)
   }
 }
 </script>

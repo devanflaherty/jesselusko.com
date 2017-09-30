@@ -205,7 +205,7 @@ nav.navbar {
         padding-top: 4rem;
         margin-right: 0!important;
         a {
-          font-size: 3rem;
+          font-size: 2.5rem;
           padding-left: 1rem;
         }
       }
@@ -226,8 +226,8 @@ nav.navbar {
       z-index: 0;
       bottom: 1rem;
       left: 1rem;
-      font-family: SFProDisplay-Bold;
-      font-size: 120px;
+      font-weight: 800;
+      font-size: 80px;
       line-height: .75;
       color: #eaeaea;
       @include tablet() {

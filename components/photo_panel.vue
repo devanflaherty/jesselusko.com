@@ -7,7 +7,7 @@
         </transition>
         <div class="fold-footer">
           <transition name="fade-in" appear>
-            <h1>Jesse Lusko</h1>
+            <h1 v-if="$route.name !== 'seriesSlug'">Jesse Lusko</h1>
           </transition>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default {
 .fold-container {
   position: fixed;
   width: 50%;
-  height: 100vh;
+  min-height: 100vh;
   top: 0;
   left: 0;
   display: flex;

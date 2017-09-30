@@ -1,12 +1,12 @@
 <template>
-  <section id="messagePage" class="section" :key="$route.path">
+  <section id="messagePage" class="section" v-if="message && series">
     <div class="container">
       <div class="columns">
         <div class="column is-8">
-          <videoPlayer :url="message.fields.videoUrl" color="ffffff"></videoPlayer>
+          <videoPlayer :url="message.fields.videoUrl" color="ffffff" v-if="message.fields.videoUrl"></videoPlayer>
         </div>
         <div class="column is-4">
-          <nuxt-link :to="`/${series.fields.slug}`" >Back to {{series.fields.title}}</nuxt-link>
+          <nuxt-link :to="`/${series.fields.slug}`">Back to {{series.fields.title}}</nuxt-link>
           <h2>{{message.fields.title}}</h2>
           <h4 v-if="message.fields.scripture">{{message.fields.scripture}}</h4>
           <p v-if="message.fields.description">{{message.fields.description}}</p>
@@ -25,12 +25,31 @@ const client = createClient()
 export default {
   scrollToTop: true,
   transition: {
-    name: 'fade-in'
+    name: 'page-scale'
   },
   components: {
     VideoPlayer
   },
-  asyncData ({env, params}) {
+  data () {
+    return {
+      series: {
+        fields: {
+          thumbnail: {
+            fields: {
+              file: {
+                url: ''
+              }
+            }
+          }
+        }
+      },
+      message: {
+        fields: {}
+      },
+      error: null
+    }
+  },
+  asyncData ({env, params, redirect, error}) {
     return Promise.all([
       client.getEntries({
         'content_type': 'messages',
@@ -43,14 +62,17 @@ export default {
     ]).then(([message, series]) => {
       // return data that should be available
       // in the template
-      return {
-        message: message.items[0],
-        series: series.items[0]
+      if (series.items.length > 0 && message.items.length > 0) {
+        return {
+          message: message.items[0],
+          series: series.items[0]
+        }
+      } else {
+        error({statusCode: 404, message: 'The message or series you are looking for does not exist.'})
       }
-    }).catch(console.error)
-  },
-  mounted () {
-    console.log(this.$route.name)
+    }).catch(err => {
+      console.error(err)
+    })
   }
 }
 </script>
