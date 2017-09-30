@@ -34,7 +34,7 @@ export default {
     return Promise.all([
       client.getEntries({
         'content_type': 'series',
-        order: '-sys.createdAt'
+        order: 'fields.position'
       })
     ]).then(([series]) => {
       // return data that should be available
