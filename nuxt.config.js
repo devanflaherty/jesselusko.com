@@ -71,14 +71,15 @@ module.exports = {
         })
 
         var marr = []
-        series.items.forEach( s => {
+        series.items.forEach(s => {
           if (s.fields.messages) {
-            marr = s.fields.messages.map((m) => {
+            var messages = s.fields.messages.map((m) => {
               return `/${s.fields.slug}/${m.fields.slug}`
             })
+            marr = [...marr, ...messages]
           }
         })
-        rarr = [...sarr, ...marr]
+        var rarr = [...sarr, ...marr]
         return rarr
       }).catch(console.error)
     }
