@@ -39,11 +39,10 @@ export default {
 .fold-container {
   position: fixed;
   width: 50%;
-  min-height: 100vh;
+  height: 100vh;
   top: 0;
   left: 0;
   display: flex;
-  height: 100%;
   flex-direction: column;
   padding: 0;
   transition: height 0.5s ease;

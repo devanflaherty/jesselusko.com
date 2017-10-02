@@ -28,7 +28,7 @@ export default {
   position: fixed;
   z-index: 10;
   width: 50%;
-  min-height: 100vh;
+  height: 100vh;
   top: 0;
   left: 0;
   display: flex;
@@ -37,10 +37,9 @@ export default {
   align-items: center;
   padding: 0;
   @include mobile(){
-    // position: relative;
-    // width: 100%;
-    // height: 50vh;
-    display: none;
+    position: relative;
+    width: 100%;
+    height: 50vh;
   }
   .box {
     padding: 0;
