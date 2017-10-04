@@ -36,6 +36,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 0;
+  overflow: hidden;
   @include mobile(){
     position: relative;
     width: 100%;

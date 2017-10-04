@@ -12,7 +12,7 @@
           <nuxt-link to="/book" class="button is-primary is-expanded">Request a Booking</nuxt-link>
         </div>
         <div id="socialIcons" class="column is-narrow">
-          <a target="_blank" rel="noopener" href="https://www.facebook.com/jesselusko"><i class="fa fa-facebook-square"></i></a>
+          <a target="_blank" rel="noopener" href="https://www.instagram.com/jesselusko"><i class="fa fa-instagram"></i></a>
           <a target="_blank" rel="noopener" href="https://twitter.com/jesselusko"><i class="fa fa-twitter-square"></i></a>
         </div>
       </div>

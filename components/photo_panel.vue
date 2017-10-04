@@ -46,10 +46,11 @@ export default {
   flex-direction: column;
   padding: 0;
   transition: height 0.5s ease;
+  overflow: hidden;
   @include mobile(){
     position: relative;
     width: 100%;
-    height: 50vh;
+    height: 66vh;
   }
   .loaded {
     display: flex;
@@ -64,7 +65,7 @@ export default {
     }
   }
   .photo-fold {
-    flex: 1 0 auto;
+    flex: 1 0 100%;
     background-size: cover!important;
     background-position: center;
     min-height: 50vh;

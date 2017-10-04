@@ -4,7 +4,7 @@
     
     <transition name="slide-left" appear>
       <aside id="socialNav" v-if="!isMessage">
-        <a target="_blank" rel="noopener" href="https://www.facebook.com/jesselusko"><i class="fa fa-facebook-square"></i></a>
+        <a target="_blank" rel="noopener" href="https://www.instagram.com/jesselusko"><i class="fa fa-instagram"></i></a>
         <a target="_blank" rel="noopener" href="https://twitter.com/jesselusko"><i class="fa fa-twitter-square"></i></a>
       </aside>
     </transition>
