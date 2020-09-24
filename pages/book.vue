@@ -14,10 +14,9 @@
                 <h2>Request Form</h2>
                 <form 
                   name="booking"
-                  method="post"
+                  @submit.prevent="onSubmit"
                   data-netlify="true"
                   data-netlify-honeypot="bot-field">
-                  <input type="hidden" name="form-name" value="booking" />
                   
                   <div class="field">
                     <label class="label">Name</label>
@@ -94,7 +93,7 @@
   
                   <div class="field is-grouped">
                     <div class="control">
-                      <button class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
+                      <button @click="onSubmit" class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
                         <transition name="fade-in">
                           <span class="icon is-small" v-if="sent">
                             <i class="fa fa-check"></i>
@@ -154,38 +153,48 @@ export default {
     }
   },
   methods: {
-    // onSubmit () {
-    //   this.$validator.validateAll().then((result) => {
-    //     if (result) {
-    //       // eslint-disable-next-line
-    //       this.post()
-    //       return
-    //     }
+    onSubmit () {
+      this.$validator.validateAll().then((result) => {
+        if (result) {
+          // eslint-disable-next-line
+          this.post()
+          return
+        }
 
-    //     this.changeModalVis(true)
-    //   })
-    // },
-    // post () {
-    //   this.loading = true
-    //   axios.post('https://formspree.io/jessejlusko@gmail.com', {
-    //     'name': this.name,
-    //     'email': this.email,
-    //     'phone': this.phone,
-    //     'message': this.message,
-    //     '_replyto': this.email,
-    //     '_subject': `Booking Request from ${this.name}`
-    //     // '_subject': 'Booking Request from ' + this.name,
-    //     // '_next': '#success'
-    //   }).then(res => {
-    //     this.loading = false
-    //     this.changeModalVis(true)
-    //     this.name = null
-    //     this.phone = null
-    //     this.email = null
-    //     this.message = null
-    //     this.$validator.clean()
-    //   })
-    // },
+        this.changeModalVis(true)
+      })
+    },
+    encode (data) {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&")
+    },
+    post () {
+      this.loading = true
+      axios.post(
+        '/', 
+        this.encode({
+          'form-name': 'booking',
+          'name': this.name,
+          'email': this.email,
+          'phone': this.phone,
+          'message': this.message,
+        }),
+        {
+          header: { "Content-Type": "application/x-www-form-urlencoded" }
+        }
+      ).then(res => {
+        this.loading = false
+        this.changeModalVis(true)
+        this.name = null
+        this.phone = null
+        this.email = null
+        this.message = null
+        this.$validator.clean()
+      })
+    },
     clearForm () {
       this.name = null
       this.phone = null
