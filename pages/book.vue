@@ -14,7 +14,9 @@
                 <h2>Request Form</h2>
                 <form
                   name="booking"
-                  @submit.prevent="onSubmit">
+                  @submit.prevent="onSubmit"
+                  netlify
+                  data-netlify-honeypot="bot-field">
 
                   <div class="field">
                     <label class="label">Name</label>
@@ -91,7 +93,7 @@
 
                   <div class="field is-grouped">
                     <div class="control">
-                      <button @click="onSubmit" class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
+                      <button class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
                         <transition name="fade-in">
                           <span class="icon is-small" v-if="sent">
                             <i class="fa fa-check"></i>
