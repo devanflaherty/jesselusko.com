@@ -12,7 +12,12 @@
             <article class="columns" key="welcome" :data-index="1">
               <div class="column">
                 <h2>Request Form</h2>
-                <form @submit.prevent="onSubmit">
+                <form 
+                  name="booking"
+                  method="post"
+                  data-netlify="true"
+                  data-netlify-honeypot="bot-field">
+                  <input type="hidden" name="form-name" value="booking" />
                   
                   <div class="field">
                     <label class="label">Name</label>
@@ -89,7 +94,7 @@
   
                   <div class="field is-grouped">
                     <div class="control">
-                      <button @click="onSubmit" class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
+                      <button class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
                         <transition name="fade-in">
                           <span class="icon is-small" v-if="sent">
                             <i class="fa fa-check"></i>
@@ -149,38 +154,38 @@ export default {
     }
   },
   methods: {
-    onSubmit () {
-      this.$validator.validateAll().then((result) => {
-        if (result) {
-          // eslint-disable-next-line
-          this.post()
-          return
-        }
+    // onSubmit () {
+    //   this.$validator.validateAll().then((result) => {
+    //     if (result) {
+    //       // eslint-disable-next-line
+    //       this.post()
+    //       return
+    //     }
 
-        this.changeModalVis(true)
-      })
-    },
-    post () {
-      this.loading = true
-      axios.post('https://formspree.io/jessejlusko@gmail.com', {
-        'name': this.name,
-        'email': this.email,
-        'phone': this.phone,
-        'message': this.message,
-        '_replyto': this.email,
-        '_subject': `Booking Request from ${this.name}`
-        // '_subject': 'Booking Request from ' + this.name,
-        // '_next': '#success'
-      }).then(res => {
-        this.loading = false
-        this.changeModalVis(true)
-        this.name = null
-        this.phone = null
-        this.email = null
-        this.message = null
-        this.$validator.clean()
-      })
-    },
+    //     this.changeModalVis(true)
+    //   })
+    // },
+    // post () {
+    //   this.loading = true
+    //   axios.post('https://formspree.io/jessejlusko@gmail.com', {
+    //     'name': this.name,
+    //     'email': this.email,
+    //     'phone': this.phone,
+    //     'message': this.message,
+    //     '_replyto': this.email,
+    //     '_subject': `Booking Request from ${this.name}`
+    //     // '_subject': 'Booking Request from ' + this.name,
+    //     // '_next': '#success'
+    //   }).then(res => {
+    //     this.loading = false
+    //     this.changeModalVis(true)
+    //     this.name = null
+    //     this.phone = null
+    //     this.email = null
+    //     this.message = null
+    //     this.$validator.clean()
+    //   })
+    // },
     clearForm () {
       this.name = null
       this.phone = null
