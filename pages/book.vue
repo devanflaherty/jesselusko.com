@@ -12,18 +12,16 @@
             <article class="columns" key="welcome" :data-index="1">
               <div class="column">
                 <h2>Request Form</h2>
-                <form 
+                <form
                   name="booking"
-                  @submit.prevent="onSubmit"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field">
-                  
+                  @submit.prevent="onSubmit">
+
                   <div class="field">
                     <label class="label">Name</label>
                     <div class="control has-icons-left has-icons-right">
-                      <input class="input" type="text" v-model="name" name="name" 
-                        placeholder="John Smith" 
-                        v-validate="'required'" 
+                      <input class="input" type="text" v-model="name" name="name"
+                        placeholder="John Smith"
+                        v-validate="'required'"
                         :class="{'is-danger': errors.has('name') }">
                       <span class="icon is-small is-left">
                         <i class="fa fa-user"></i>
@@ -90,7 +88,7 @@
                       </transition-group>
                     </div>
                   </transition>
-  
+
                   <div class="field is-grouped">
                     <div class="control">
                       <button @click="onSubmit" class="button is-primary" :class="{'is-loading': loading, 'is-success': sent}">
@@ -174,7 +172,7 @@ export default {
     post () {
       this.loading = true
       axios.post(
-        '/', 
+        '/',
         this.encode({
           'form-name': 'booking',
           'name': this.name,
